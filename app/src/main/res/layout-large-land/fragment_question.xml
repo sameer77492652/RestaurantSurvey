@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="What do you think about this food?"
+        android:textStyle="bold"
+        android:textSize="40dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tvQuestion"
+        android:layout_marginTop="40dp"
+        android:weightSum="5"
+        >
+
+        <TextView
+            android:id="@+id/tvOne"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:text="GREAT"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_backrgound"
+            />
+
+        <TextView
+            android:id="@+id/tvTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:text="GOOD"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_backrgound"
+            />
+
+
+        <TextView
+            android:id="@+id/tvThree"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:text="AVERAGE"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_backrgound"
+            />
+
+        <TextView
+            android:id="@+id/tvFour"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:text="BAD"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_backrgound"
+            />
+
+        <TextView
+            android:id="@+id/tvFive"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:text="VERY BAD"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_backrgound"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

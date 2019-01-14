@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/leaves_horizontal"
+    tools:context=".activity.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        >
+        <TextView
+            android:id="@+id/tvRestaurantName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:text="MOTI MAHAL RESTAURANT"
+            />
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:hint="Name (optional)"
+            android:background="@drawable/layout_edittext"
+            android:layout_below="@id/tvRestaurantName"
+
+
+            />
+
+        <EditText
+            android:id="@+id/etMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:hint="Mobile Number (Optional)"
+            android:background="@drawable/layout_edittext"
+            android:layout_below="@id/etName"
+
+
+            />
+
+        <Button
+            android:id="@+id/btStartSurvey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/etMobile"
+            android:text="START SURVEY" />
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

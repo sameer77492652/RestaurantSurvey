@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:hint="Name (optional)"
+        android:background="@drawable/layout_edittext"
+
+
+        />
+
+    <EditText
+        android:id="@+id/etMobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:hint="Mobile Number (Optional)"
+        android:background="@drawable/layout_edittext"
+        android:layout_below="@id/etName"
+
+
+        />
+
+    <Button
+        android:id="@+id/btStartSurvey"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:layout_below="@+id/etMobile"
+        android:text="START SURVEY" />
+
+</RelativeLayout>
