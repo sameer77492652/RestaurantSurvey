@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import actiknow.com.restaurantsurvey.R;
 import actiknow.com.restaurantsurvey.model.Option;
 import actiknow.com.restaurantsurvey.model.Question;
+import actiknow.com.restaurantsurvey.model.Response;
 import actiknow.com.restaurantsurvey.utils.AppConfigTags;
 import actiknow.com.restaurantsurvey.utils.UserDetailsPref;
 import actiknow.com.restaurantsurvey.utils.Utils;
@@ -31,6 +32,7 @@ public class QuestionFragment extends Fragment {
 
     ArrayList<Question> questionList = new ArrayList<>();
     ArrayList<Option> optionList = new ArrayList<>();
+    ArrayList<Response> responseList = new ArrayList<>();
     UserDetailsPref userDetailsPref;
     String response = "";
     int index = 0;
@@ -83,7 +85,7 @@ public class QuestionFragment extends Fragment {
                             new String(jsonObjectOption.getString(AppConfigTags.OPTION_HINDI).getBytes("ISO-8859-1"), "utf-8")
                     ));
                 }
-                questionChange();
+                questionChange(0);
             } else {
                 Utils.showToast(getActivity(), message, true);
             }
@@ -100,10 +102,10 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
-                        sendToRatingActivity();
+                        sendToRatingActivity(5);
                     } else {
                         index = index + 1;
-                        questionChange();
+                        questionChange(5);
                     }
                 }
             }
@@ -115,10 +117,10 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
-                        sendToRatingActivity();
+                        sendToRatingActivity(4);
                     } else {
                         index = index + 1;
-                        questionChange();
+                        questionChange(4);
                     }
                 }
             }
@@ -130,10 +132,10 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
-                        sendToRatingActivity();
+                        sendToRatingActivity(3);
                     } else {
                         index = index + 1;
-                        questionChange();
+                        questionChange(3);
                     }
                 }
             }
@@ -145,10 +147,10 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
-                        sendToRatingActivity();
+                        sendToRatingActivity(2);
                     } else {
                         index = index + 1;
-                        questionChange();
+                        questionChange(2);
                     }
                 }
             }
@@ -160,10 +162,10 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
-                        sendToRatingActivity();
+                        sendToRatingActivity(1);
                     } else {
                         index = index + 1;
-                        questionChange();
+                        questionChange(1);
                     }
                 }
             }
@@ -171,14 +173,22 @@ public class QuestionFragment extends Fragment {
 
     }
 
-    private void sendToRatingActivity() {
+    private void sendToRatingActivity(int selected_response) {
+        responseList.add(new Response(index + 1, selected_response));
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("response_list", responseList);
+        RatingFragment ratingFragment = new RatingFragment();
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_switch, new RatingFragment());
+        ratingFragment.setArguments(bundle);
+        fragmentTransaction.replace(R.id.fragment_switch, ratingFragment);
         fragmentTransaction.commit();
     }
 
-    private void questionChange(){
+    private void questionChange(int selected_response){
+        if(index != 0) {
+            responseList.add(new Response(index+1, selected_response));
+        }
         clicked = false;
         switch (userDetailsPref.getStringPref(getActivity(), UserDetailsPref.LANGUAGE_TYPE)){
             case "english":
