@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
     >
 
     <EditText
@@ -14,6 +16,7 @@
         android:layout_marginLeft="150dp"
         android:layout_marginRight="150dp"
         android:hint="Name (optional)"
+        android:imeOptions="actionDone"
         android:background="@drawable/layout_edittext"
 
 
@@ -28,6 +31,7 @@
         android:layout_marginLeft="150dp"
         android:layout_marginRight="150dp"
         android:hint="Mobile Number (Optional)"
+        android:imeOptions="actionDone"
         android:background="@drawable/layout_edittext"
         android:layout_below="@id/etName"
 

@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class QuestionFragment extends Fragment {
     UserDetailsPref userDetailsPref;
     String response = "";
     int index = 0;
+    String answer = "";
 
     boolean clicked = false;
 
@@ -162,10 +164,10 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
-                        sendToRatingActivity(1);
+                        sendToRatingActivity(5);
                     } else {
                         index = index + 1;
-                        questionChange(1);
+                        questionChange(5);
                     }
                 }
             }
@@ -175,8 +177,10 @@ public class QuestionFragment extends Fragment {
 
     private void sendToRatingActivity(int selected_response) {
         responseList.add(new Response(index + 1, selected_response));
+        answer = answer + "," + String.valueOf(selected_response);;
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("response_list", responseList);
+        bundle.putString(AppConfigTags.ANSWER, answer);
         RatingFragment ratingFragment = new RatingFragment();
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -185,11 +189,17 @@ public class QuestionFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
-    private void questionChange(int selected_response){
+    public void questionChange(int selected_response){
         if(index != 0) {
             responseList.add(new Response(index+1, selected_response));
         }
+        if(index == 1){
+            answer = String.valueOf(selected_response);
+        }else{
+            answer = answer + "," + String.valueOf(selected_response);;
+        }
         clicked = false;
+        Utils.showLog(Log.ERROR, "language2", userDetailsPref.getStringPref(getActivity(), UserDetailsPref.LANGUAGE_TYPE), true);
         switch (userDetailsPref.getStringPref(getActivity(), UserDetailsPref.LANGUAGE_TYPE)){
             case "english":
                 tvOne.setText(optionList.get(0).getOpt_english());

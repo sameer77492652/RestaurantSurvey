@@ -33,9 +33,12 @@ public class AppConfigTags {
 
     public static String USER_ID = "user_id";
     public static String USER_NAME = "user_name";
-    public static String USER_EMAIL = "email";
+    public static String USER_EMAIL = "user_email";
     public static String USER_PASSWORD = "password";
-    public static String USER_MOBILE = "mobile";
+    public static String USER_MOBILE = "user_mobile";
+    public static String USER_USERNAME = "user_username";
+    public static String USER_TYPE = "user_type";
+    public static String USER_LOGIN_KEY = "user_login_key";
     public static String USER_FIREBASE_ID = "firebase_id";
     public static String PROFILE = "profile";
     public static String DOB = "dob";
@@ -50,18 +53,15 @@ public class AppConfigTags {
     public static String OPTION_ID = "option_id";
     public static String OPTION_ENGLISH = "option_english";
     public static String OPTION_HINDI = "option_hindi";
-    public static String EARN_POINTS = "earn_points";
+    public static String ANSWER = "answer";
     public static String LANGUAGE_ID = "language_id";
 
 
-    public static String SCORELIST = "scorelist";
-    public static String FAQLIST = "faqlist";
-    public static String USER_SCORE = "user_score";
-    public static String SCORE = "score";
-
     public static String QUESTION_ENGLISH = "question_english";
     public static String QUESTION_HINDI = "question_hindi";
-    public static String CORRECT_ID = "correct_id";
+    public static String RESPONSES = "responses";
+    public static String RATING = "rating";
+    public static String COMMENT = "comment";
 
 
 }

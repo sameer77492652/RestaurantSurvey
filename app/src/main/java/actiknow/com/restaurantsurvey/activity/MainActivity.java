@@ -1,5 +1,7 @@
 package actiknow.com.restaurantsurvey.activity;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +11,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -25,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import actiknow.com.restaurantsurvey.R;
+import actiknow.com.restaurantsurvey.fragment.StartSurveyFragment;
 import actiknow.com.restaurantsurvey.model.Option;
 import actiknow.com.restaurantsurvey.model.Question;
 import actiknow.com.restaurantsurvey.utils.AppConfigTags;
@@ -36,7 +38,6 @@ import actiknow.com.restaurantsurvey.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
     CoordinatorLayout clMain;
-    Button btStartSurvey;
     TextView tvEnglish;
     TextView tvHindi;
     ProgressDialog progressDialog;
@@ -47,25 +48,57 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_new);
         initView();
         initData();
         initListener();
-        initApplication();
     }
 
     private void initData() {
         progressDialog = new ProgressDialog(MainActivity.this);
         userDetailsPref = UserDetailsPref.getInstance();
-        if(userDetailsPref.getStringPref(MainActivity.this, UserDetailsPref.LANGUAGE_TYPE).length() == 0){
-            userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LANGUAGE_TYPE, Constants.lang_english);
+        switch (userDetailsPref.getStringPref(MainActivity.this, UserDetailsPref.LANGUAGE_TYPE)){
+            case "english" :
+                tvEnglish.setBackgroundColor(getResources().getColor(R.color.green_dark));
+                tvEnglish.setTextColor(getResources().getColor(R.color.white));
+                tvHindi.setBackgroundColor(getResources().getColor(R.color.white));
+                tvHindi.setTextColor(getResources().getColor(R.color.black));
+                userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LANGUAGE_TYPE, Constants.lang_english);
+                break;
+
+            case "hindi" :
+                tvHindi.setBackgroundColor(getResources().getColor(R.color.green_dark));
+                tvHindi.setTextColor(getResources().getColor(R.color.white));
+                tvEnglish.setBackgroundColor(getResources().getColor(R.color.white));
+                tvEnglish.setTextColor(getResources().getColor(R.color.black));
+                userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LANGUAGE_TYPE, Constants.lang_hindi);
         }
+        fragmentFunction();
+        if(userDetailsPref.getIntPref(MainActivity.this, UserDetailsPref.USER_ID) == 0){
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
+        if(!userDetailsPref.getStringPref(MainActivity.this, UserDetailsPref.LOGIN_CHECK).equalsIgnoreCase("LOGIN")){
+            initApplication();
+        }
+    }
+
+    private void fragmentFunction() {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        StartSurveyFragment f1 = new StartSurveyFragment();
+        fragmentTransaction.add(R.id.fragment_switch, f1, "fragment1");
+        fragmentTransaction.commit();
     }
 
     private void initListener() {
         tvEnglish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tvEnglish.setBackgroundColor(getResources().getColor(R.color.green_dark));
+                tvEnglish.setTextColor(getResources().getColor(R.color.white));
+                tvHindi.setBackgroundColor(getResources().getColor(R.color.white));
+                tvHindi.setTextColor(getResources().getColor(R.color.black));
                 userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LANGUAGE_TYPE, Constants.lang_english);
             }
         });
@@ -73,15 +106,11 @@ public class MainActivity extends AppCompatActivity {
         tvHindi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tvHindi.setBackgroundColor(getResources().getColor(R.color.green_dark));
+                tvHindi.setTextColor(getResources().getColor(R.color.white));
+                tvEnglish.setBackgroundColor(getResources().getColor(R.color.white));
+                tvEnglish.setTextColor(getResources().getColor(R.color.black));
                 userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LANGUAGE_TYPE, Constants.lang_hindi);
-            }
-        });
-
-        btStartSurvey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
-                startActivity(intent);
             }
         });
     }
@@ -90,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
         clMain = (CoordinatorLayout)findViewById(R.id.clMain);
         tvEnglish = (TextView)findViewById(R.id.tvEnglish);
         tvHindi = (TextView)findViewById(R.id.tvHindi);
-        btStartSurvey = (Button)findViewById(R.id.btStartSurvey);
     }
 
     private void initApplication() {
@@ -127,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                                                     jsonObjectOption.getString(AppConfigTags.OPTION_ENGLISH),
                                                     new String(jsonObjectOption.getString(AppConfigTags.OPTION_HINDI).getBytes("ISO-8859-1"), "utf-8")
                                             ));
-                                            Log.e("test", new String(jsonObjectOption.getString(AppConfigTags.OPTION_HINDI).getBytes("ISO-8859-1"), "utf-8"));
+                                            userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LOGIN_CHECK, "LOGIN");
                                         }
                                     } else {
                                         Utils.showSnackBar(MainActivity.this, clMain, message, Snackbar.LENGTH_LONG, null, null);

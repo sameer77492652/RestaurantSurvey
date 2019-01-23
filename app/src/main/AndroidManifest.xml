@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivityNew"
+        <activity android:name=".activity.MainActivity"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateAlwaysHidden"
+
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,13 +25,11 @@
 
         </activity>
 
-        <activity android:name=".activity.QuestionActivity"
+
+        <activity android:name=".activity.LoginActivity"
             android:windowSoftInputMode="stateAlwaysHidden"
             android:screenOrientation="landscape"/>
 
-        <activity android:name=".activity.RatingActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="landscape"/>
 
     </application>
 
