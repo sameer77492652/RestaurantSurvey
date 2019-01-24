@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import actiknow.com.restaurantsurvey.R;
+import actiknow.com.restaurantsurvey.activity.MainActivity;
 import actiknow.com.restaurantsurvey.model.Option;
 import actiknow.com.restaurantsurvey.model.Question;
 import actiknow.com.restaurantsurvey.model.Response;
@@ -62,6 +63,7 @@ public class QuestionFragment extends Fragment {
     }
 
     private void initData() {
+        ((MainActivity) getActivity()).hideLanguage(1);
         userDetailsPref = UserDetailsPref.getInstance();
         response = userDetailsPref.getStringPref(getActivity(), UserDetailsPref.RESPONSE);
         try {
@@ -222,5 +224,4 @@ public class QuestionFragment extends Fragment {
                 break;
         }
     }
-
 }

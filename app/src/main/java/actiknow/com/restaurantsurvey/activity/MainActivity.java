@@ -205,4 +205,16 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
+    public void hideLanguage(int type){
+        tvEnglish = (TextView)findViewById(R.id.tvEnglish);
+        tvHindi = (TextView)findViewById(R.id.tvHindi);
+        if (type == 1) {
+            tvEnglish.setVisibility(View.GONE);
+            tvHindi.setVisibility(View.GONE);
+        }else{
+            tvEnglish.setVisibility(View.VISIBLE);
+            tvHindi.setVisibility(View.VISIBLE);
+        }
+    }
 }
