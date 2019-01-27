@@ -12,14 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:padding="15dp"
+        android:padding="20dp"
         android:layout_marginLeft="150dp"
         android:layout_marginRight="150dp"
         android:hint="Name (optional)"
         android:imeOptions="actionDone"
         android:background="@drawable/layout_edittext"
-
-
         />
 
     <EditText
@@ -27,15 +25,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:padding="15dp"
+        android:padding="20dp"
         android:layout_marginLeft="150dp"
         android:layout_marginRight="150dp"
         android:hint="Mobile Number (Optional)"
         android:imeOptions="actionDone"
         android:background="@drawable/layout_edittext"
         android:layout_below="@id/etName"
-
-
         />
 
     <Button
@@ -47,6 +43,9 @@
         android:layout_marginLeft="150dp"
         android:layout_marginRight="150dp"
         android:layout_below="@+id/etMobile"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@color/button_green"
         android:text="START SURVEY" />
 
 </RelativeLayout>

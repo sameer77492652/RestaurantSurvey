@@ -31,7 +31,6 @@ public class QuestionFragment extends Fragment {
     TextView tvThree;
     TextView tvFour;
     TextView tvFive;
-
     ArrayList<Question> questionList = new ArrayList<>();
     ArrayList<Option> optionList = new ArrayList<>();
     ArrayList<Response> responseList = new ArrayList<>();
@@ -209,7 +208,6 @@ public class QuestionFragment extends Fragment {
                 tvThree.setText(optionList.get(2).getOpt_english());
                 tvFour.setText(optionList.get(3).getOpt_english());
                 tvFive.setText(optionList.get(4).getOpt_english());
-
                 tvQuestion.setText(questionList.get(index).getQues_english());
                 break;
 
@@ -219,7 +217,6 @@ public class QuestionFragment extends Fragment {
                 tvThree.setText(optionList.get(2).getOpt_hindi());
                 tvFour.setText(optionList.get(3).getOpt_hindi());
                 tvFive.setText(optionList.get(4).getOpt_hindi());
-
                 tvQuestion.setText(questionList.get(index).getQues_hindi());
                 break;
         }

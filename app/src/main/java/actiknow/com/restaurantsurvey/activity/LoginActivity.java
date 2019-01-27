@@ -57,7 +57,18 @@ public class LoginActivity extends AppCompatActivity{
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginRequestToServer();
+                if(etUsername.getText().toString().length() == 0 && etPassword.getText().toString().length() == 0){
+                    Utils.showToast(LoginActivity.this, "Please fill all the fields", true);
+                }else{
+                    if(etUsername.getText().toString().length() == 0){
+                        Utils.showToast(LoginActivity.this, "Please Enter Username", true);
+                    }else if(etPassword.getText().toString().length() == 0){
+                        Utils.showToast(LoginActivity.this, "Please Enter Password", true);
+                    }else{
+                        loginRequestToServer();
+                    }
+                }
+
             }
         });
 
@@ -108,6 +119,7 @@ public class LoginActivity extends AppCompatActivity{
                                         userDetailsPref.putStringPref(LoginActivity.this, UserDetailsPref.USER_MOBILE, jsonObj.getString(AppConfigTags.USER_MOBILE));
                                         userDetailsPref.putStringPref(LoginActivity.this, UserDetailsPref.USER_USERNAME, jsonObj.getString(AppConfigTags.USER_USERNAME));
                                         userDetailsPref.putStringPref(LoginActivity.this, UserDetailsPref.USER_LOGIN_KEY, jsonObj.getString(AppConfigTags.USER_LOGIN_KEY));
+                                        userDetailsPref.putStringPref(LoginActivity.this, UserDetailsPref.USER_RESTAURANT_NAME, jsonObj.getString(AppConfigTags.USER_RESTAURANT_NAME));
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         startActivity(intent);
                                     } else {

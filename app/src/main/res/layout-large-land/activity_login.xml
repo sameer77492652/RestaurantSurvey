@@ -56,8 +56,6 @@
                 android:imeOptions="actionDone"
                 android:background="@drawable/layout_edittext"
                 android:layout_below="@id/etUsername"
-
-
                 />
 
             <Button
@@ -69,8 +67,10 @@
                 android:layout_marginLeft="150dp"
                 android:layout_marginRight="150dp"
                 android:layout_below="@+id/etPassword"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@color/button_green"
                 android:text="LOGIN" />
-
 
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -10,6 +10,7 @@ public class UserDetailsPref {
     public static String USER_EMAIL = "user_email";
     public static String USER_MOBILE = "user_mobile";
     public static String USER_LOGIN_KEY = "user_login_key";
+    public static String USER_RESTAURANT_NAME = "user_restaurant_name";
     public static String QUESTION_LIST = "question_list";
     public static String OPTION_LIST = "option_list";
     public static String RESPONSE = "response";

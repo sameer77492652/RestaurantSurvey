@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     CoordinatorLayout clMain;
     TextView tvEnglish;
     TextView tvHindi;
+    TextView tvRestaurantName;
     ProgressDialog progressDialog;
     ArrayList<Question> questionList = new ArrayList<>();
     ArrayList<Option> optionList = new ArrayList<>();
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_new);
+        setContentView(R.layout.activity_main);
         initView();
         initData();
         initListener();
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         userDetailsPref = UserDetailsPref.getInstance();
         switch (userDetailsPref.getStringPref(MainActivity.this, UserDetailsPref.LANGUAGE_TYPE)){
             case "english" :
-                tvEnglish.setBackgroundColor(getResources().getColor(R.color.green_dark));
+                tvEnglish.setBackgroundColor(getResources().getColor(R.color.button_green));
                 tvEnglish.setTextColor(getResources().getColor(R.color.white));
                 tvHindi.setBackgroundColor(getResources().getColor(R.color.white));
                 tvHindi.setTextColor(getResources().getColor(R.color.black));
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case "hindi" :
-                tvHindi.setBackgroundColor(getResources().getColor(R.color.green_dark));
+                tvHindi.setBackgroundColor(getResources().getColor(R.color.button_green));
                 tvHindi.setTextColor(getResources().getColor(R.color.white));
                 tvEnglish.setBackgroundColor(getResources().getColor(R.color.white));
                 tvEnglish.setTextColor(getResources().getColor(R.color.black));
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
         }
+        tvRestaurantName.setText(userDetailsPref.getStringPref(MainActivity.this, UserDetailsPref.USER_RESTAURANT_NAME));
         if(!userDetailsPref.getStringPref(MainActivity.this, UserDetailsPref.LOGIN_CHECK).equalsIgnoreCase("LOGIN")){
             initApplication();
         }
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         tvEnglish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvEnglish.setBackgroundColor(getResources().getColor(R.color.green_dark));
+                tvEnglish.setBackgroundColor(getResources().getColor(R.color.button_green));
                 tvEnglish.setTextColor(getResources().getColor(R.color.white));
                 tvHindi.setBackgroundColor(getResources().getColor(R.color.white));
                 tvHindi.setTextColor(getResources().getColor(R.color.black));
@@ -106,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         tvHindi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvHindi.setBackgroundColor(getResources().getColor(R.color.green_dark));
+                tvHindi.setBackgroundColor(getResources().getColor(R.color.button_green));
                 tvHindi.setTextColor(getResources().getColor(R.color.white));
                 tvEnglish.setBackgroundColor(getResources().getColor(R.color.white));
                 tvEnglish.setTextColor(getResources().getColor(R.color.black));
@@ -119,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         clMain = (CoordinatorLayout)findViewById(R.id.clMain);
         tvEnglish = (TextView)findViewById(R.id.tvEnglish);
         tvHindi = (TextView)findViewById(R.id.tvHindi);
+        tvRestaurantName = (TextView)findViewById(R.id.tvRestaurantName);
     }
 
     private void initApplication() {
