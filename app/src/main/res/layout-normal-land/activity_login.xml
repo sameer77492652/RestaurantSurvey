@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/clMain"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/leaves_horizontal"
+    tools:context=".activity.MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        >
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="LOGIN" />
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:padding="5dp"
+            android:textSize="20dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="150dp"
+            android:hint="Name (optional)"
+            android:layout_below="@+id/tvLogin"
+
+            />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:inputType="textPassword"
+            android:padding="5dp"
+            android:textSize="20dp"
+            android:hint="Password"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="150dp"
+            android:layout_below="@id/etUsername"
+            />
+
+        <Button
+            android:id="@+id/btLogin"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="150dp"
+            android:layout_below="@+id/etPassword"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@color/button_green"
+            android:text="LOGIN" />
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
