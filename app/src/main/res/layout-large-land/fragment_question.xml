@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/tvOne"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="150dp"
             android:text="GREAT"
             android:textColor="@color/white"
@@ -38,12 +38,12 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:background="@drawable/gradient_backrgound"
+            android:background="@color/excellent_color"
             />
 
         <TextView
             android:id="@+id/tvTwo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="150dp"
             android:text="GOOD"
             android:textColor="@color/white"
@@ -53,13 +53,13 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:background="@drawable/gradient_backrgound"
+            android:background="@color/good_color"
             />
 
 
         <TextView
             android:id="@+id/tvThree"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="150dp"
             android:text="AVERAGE"
             android:textColor="@color/white"
@@ -69,12 +69,12 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:background="@drawable/gradient_backrgound"
+            android:background="@color/average_color"
             />
 
         <TextView
             android:id="@+id/tvFour"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="150dp"
             android:text="BAD"
             android:textColor="@color/white"
@@ -84,12 +84,12 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:background="@drawable/gradient_backrgound"
+            android:background="@color/poor_color"
             />
 
         <TextView
             android:id="@+id/tvFive"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="150dp"
             android:text="VERY BAD"
             android:textColor="@color/white"
@@ -99,7 +99,7 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:background="@drawable/gradient_backrgound"
+            android:background="@color/very_poor_color"
             />
     </LinearLayout>
 
