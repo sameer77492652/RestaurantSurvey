@@ -40,5 +40,12 @@
     <color name="divider_color">#4b4b4b</color>
     <color name="progress_dialog_background_color">#ffffff</color>
 
+
+    <color name="excellent_color">#71df96</color>
+    <color name="good_color">#90d3f5</color>
+    <color name="average_color">#f8dc89</color>
+    <color name="poor_color">#f58ab6</color>
+    <color name="very_poor_color">#eb6c76</color>
+
 </resources>
 

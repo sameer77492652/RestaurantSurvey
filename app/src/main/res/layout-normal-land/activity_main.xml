@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/leaves_horizontal"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.MainActivity"
+    tools:ignore="MissingDefaultResource">
 
     <RelativeLayout
         android:layout_width="match_parent"

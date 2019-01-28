@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/leaves_horizontal"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.MainActivity"
+    tools:ignore="MissingDefaultResource">
 
 
     <RelativeLayout
@@ -36,6 +37,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="150dp"
             android:layout_marginRight="150dp"
+            android:background="@drawable/layout_edittext"
             android:hint="Name (optional)"
             android:layout_below="@+id/tvLogin"
 
@@ -50,6 +52,7 @@
             android:padding="5dp"
             android:textSize="20dp"
             android:hint="Password"
+            android:background="@drawable/layout_edittext"
             android:layout_marginLeft="150dp"
             android:layout_marginRight="150dp"
             android:layout_below="@id/etUsername"

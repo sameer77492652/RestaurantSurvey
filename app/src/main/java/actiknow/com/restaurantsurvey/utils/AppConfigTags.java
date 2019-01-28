@@ -64,5 +64,4 @@ public class AppConfigTags {
     public static String RATING = "rating";
     public static String COMMENT = "comment";
 
-
 }
