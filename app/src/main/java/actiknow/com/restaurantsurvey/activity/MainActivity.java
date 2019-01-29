@@ -158,6 +158,9 @@ public class MainActivity extends AppCompatActivity {
                                                     jsonObjectOption.getString(AppConfigTags.OPTION_ENGLISH),
                                                     new String(jsonObjectOption.getString(AppConfigTags.OPTION_HINDI).getBytes("ISO-8859-1"), "utf-8")
                                             ));
+
+                                        }
+                                        if(jsonArrayQuestion.length() > 0){
                                             userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LOGIN_CHECK, "LOGIN");
                                         }
                                     } else {
@@ -191,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                     public Map<String, String> getHeaders () throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
                         params.put (AppConfigTags.HEADER_API_KEY, Constants.api_key);
-                        params.put (AppConfigTags.HEADER_USER_LOGIN_KEY, "c5ebcee3af05a5ae1b6a09c668ba798c");
+                        params.put (AppConfigTags.HEADER_USER_LOGIN_KEY, userDetailsPref.getStringPref(MainActivity.this, UserDetailsPref.USER_LOGIN_KEY));
                         Utils.showLog (Log.INFO, AppConfigTags.HEADERS_SENT_TO_THE_SERVER, "" + params, false);
                         return params;
                     }

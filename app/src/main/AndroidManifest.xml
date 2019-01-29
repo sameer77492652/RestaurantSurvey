@@ -28,6 +28,7 @@
 
         <activity android:name=".activity.LoginActivity"
             android:windowSoftInputMode="stateAlwaysHidden"
+            android:noHistory="true"
             android:screenOrientation="landscape"/>
 
 

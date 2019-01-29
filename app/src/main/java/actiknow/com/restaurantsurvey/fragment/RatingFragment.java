@@ -158,7 +158,7 @@ public class RatingFragment extends Fragment {
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
                     params.put(AppConfigTags.HEADER_API_KEY, Constants.api_key);
-                    params.put(AppConfigTags.HEADER_USER_LOGIN_KEY, "c5ebcee3af05a5ae1b6a09c668ba798c");
+                    params.put (AppConfigTags.HEADER_USER_LOGIN_KEY, userDetailsPref.getStringPref(getActivity(), UserDetailsPref.USER_LOGIN_KEY));
                     Utils.showLog(Log.INFO, AppConfigTags.HEADERS_SENT_TO_THE_SERVER, "" + params, false);
                     return params;
                 }
