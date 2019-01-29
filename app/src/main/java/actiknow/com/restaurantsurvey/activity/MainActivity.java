@@ -21,6 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -149,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                                             question.setQues_id(jsonObjQuestion.getInt(AppConfigTags.QUESTION_ID));
                                             question.setQues_english(jsonObjQuestion.getString(AppConfigTags.QUESTION_ENGLISH));
                                             question.setQues_hindi(new String(jsonObjQuestion.getString(AppConfigTags.QUESTION_HINDI).getBytes("ISO-8859-1"), "utf-8"));
+                                            Log.e("Hindi", new String(jsonObjQuestion.getString(AppConfigTags.QUESTION_HINDI).getBytes("ISO-8859-1"), "UTF-8"));
                                             questionList.add(question);
                                         }
 
@@ -161,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
                                         }
                                         if(jsonArrayQuestion.length() > 0){
-                                            userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LOGIN_CHECK, "LOGIN");
+                                          //  userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LOGIN_CHECK, "LOGIN");
                                         }
                                     } else {
                                         Utils.showSnackBar(MainActivity.this, clMain, message, Snackbar.LENGTH_LONG, null, null);
@@ -222,5 +224,17 @@ public class MainActivity extends AppCompatActivity {
             tvEnglish.setVisibility(View.VISIBLE);
             tvHindi.setVisibility(View.VISIBLE);
         }
+    }
+
+    public static String fixEncoding(String response) {
+        try {
+            byte[] u = response.toString().getBytes(
+                    "ISO-8859-1");
+            response = new String(u, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return response;
     }
 }

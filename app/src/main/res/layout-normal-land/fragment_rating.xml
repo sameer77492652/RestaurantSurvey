@@ -1,11 +1,10 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
     android:focusableInTouchMode="true"
-    tools:ignore="MissingDefaultResource">
+    >
 
     <RatingBar
         android:id="@+id/rbRating"
@@ -21,9 +20,10 @@
         android:layout_height="60dp"
         android:layout_below="@+id/rbRating"
         android:layout_centerInParent="true"
+        android:background="@drawable/edittext_border"
         android:layout_marginTop="20dp"
-        android:background="@drawable/layout_edittext"
-        android:hint="Comments(Optional)"/>
+        android:textSize="15dp"
+        android:hint="    Comments(Optional)"/>
 
 
 

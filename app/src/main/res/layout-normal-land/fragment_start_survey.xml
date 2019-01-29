@@ -19,7 +19,7 @@
         android:textSize="15dp"
         android:padding="10dp"
         android:imeOptions="actionDone"
-        android:background="@drawable/layout_edittext"
+        android:background="@drawable/edittext_border"
         />
 
     <EditText
@@ -34,7 +34,7 @@
         android:textSize="15dp"
         android:imeOptions="actionDone"
         android:layout_below="@id/etName"
-        android:background="@drawable/layout_edittext"
+        android:background="@drawable/edittext_border"
         />
 
     <Button
