@@ -60,8 +60,10 @@ public class AppConfigTags {
 
     public static String QUESTION_ENGLISH = "question_english";
     public static String QUESTION_HINDI = "question_hindi";
-    public static String RESPONSES = "responses";
+    public static String RESPONSE_RATING = "response_rating";
     public static String RATING = "rating";
     public static String COMMENT = "comment";
+
+    public static String ANSWER_IDS = "answer_ids";
 
 }

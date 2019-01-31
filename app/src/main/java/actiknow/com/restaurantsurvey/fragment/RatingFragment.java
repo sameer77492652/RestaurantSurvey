@@ -44,6 +44,7 @@ public class RatingFragment extends Fragment {
     UserDetailsPref userDetailsPref;
     ArrayList<Response>responseList = new ArrayList<>();
     String answer = "";
+    String answer_ids = "";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -84,6 +85,13 @@ public class RatingFragment extends Fragment {
     private void initData() {
         userDetailsPref = UserDetailsPref.getInstance();
         progressDialog = new ProgressDialog(getActivity());
+        for(int i = 0; i < responseList.size(); i++){
+            if(i == 0) {
+                answer_ids = String.valueOf(responseList.get(i).getResponse_id());
+            }else{
+                answer_ids = answer_ids + "," + String.valueOf(responseList.get(i).getResponse_id());
+            }
+        }
     }
 
     private void initView(View v) {
@@ -147,7 +155,8 @@ public class RatingFragment extends Fragment {
                     Map<String, String> params = new Hashtable<String, String>();
                     params.put(AppConfigTags.NAME, userDetailsPref.getStringPref(getActivity(), UserDetailsPref.CUSTOMER_NAME));
                     params.put(AppConfigTags.MOBILE, userDetailsPref.getStringPref(getActivity(), UserDetailsPref.CUSTOMER_MOBILE));
-                    params.put(AppConfigTags.RESPONSES, answer);
+                    params.put(AppConfigTags.ANSWER_IDS, answer_ids);
+                    params.put(AppConfigTags.RESPONSE_RATING, answer);
                     params.put(AppConfigTags.RATING, String.valueOf(rbRating.getRating()));
                     params.put(AppConfigTags.COMMENT, etComment.getText().toString());
                     Utils.showLog (Log.INFO, AppConfigTags.PARAMETERS_SENT_TO_THE_SERVER, "" + params, true);

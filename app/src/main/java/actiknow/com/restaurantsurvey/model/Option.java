@@ -10,6 +10,10 @@ public class Option {
         this.opt_hindi = opt_hindi;
     }
 
+    public Option() {
+
+    }
+
     public int getOpt_id() {
         return opt_id;
     }

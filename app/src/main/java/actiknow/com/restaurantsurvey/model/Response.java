@@ -1,14 +1,25 @@
 package actiknow.com.restaurantsurvey.model;
 
+import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+@SuppressLint("ParcelCreator")
 public class Response implements Parcelable{
-    int question_id, response;
+    int question_id, response, response_id;
 
-    public Response(int question_id, int response) {
+    public Response(int question_id, int response, int response_id) {
         this.question_id = question_id;
         this.response = response;
+        this.response_id = response_id;
+    }
+
+    public int getResponse_id() {
+        return response_id;
+    }
+
+    public void setResponse_id(int response_id) {
+        this.response_id = response_id;
     }
 
     public int getQuestion_id() {

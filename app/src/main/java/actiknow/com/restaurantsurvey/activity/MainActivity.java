@@ -143,25 +143,6 @@ public class MainActivity extends AppCompatActivity {
                                     String message = jsonObj.getString(AppConfigTags.MESSAGE);
                                     if (!error) {
                                         JSONArray jsonArrayQuestion = jsonObj.getJSONArray(AppConfigTags.QUESTIONS);
-                                        JSONArray jsonArrayOption = jsonObj.getJSONArray(AppConfigTags.OPTIONS);
-                                        for (int i = 0; i < jsonArrayQuestion.length(); i++) {
-                                            JSONObject jsonObjQuestion = jsonArrayQuestion.getJSONObject(i);
-                                            Question question = new Question();
-                                            question.setQues_id(jsonObjQuestion.getInt(AppConfigTags.QUESTION_ID));
-                                            question.setQues_english(jsonObjQuestion.getString(AppConfigTags.QUESTION_ENGLISH));
-                                            question.setQues_hindi(new String(jsonObjQuestion.getString(AppConfigTags.QUESTION_HINDI).getBytes("ISO-8859-1"), "utf-8"));
-                                            Log.e("Hindi", new String(jsonObjQuestion.getString(AppConfigTags.QUESTION_HINDI).getBytes("ISO-8859-1"), "UTF-8"));
-                                            questionList.add(question);
-                                        }
-
-                                        for(int j=0; j < jsonArrayOption.length(); j++){
-                                            JSONObject jsonObjectOption = jsonArrayOption.getJSONObject(j);
-                                            optionList.add(new Option(jsonObjectOption.getInt(AppConfigTags.OPTION_ID),
-                                                    jsonObjectOption.getString(AppConfigTags.OPTION_ENGLISH),
-                                                    new String(jsonObjectOption.getString(AppConfigTags.OPTION_HINDI).getBytes("ISO-8859-1"), "utf-8")
-                                            ));
-
-                                        }
                                         if(jsonArrayQuestion.length() > 0){
                                           //  userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LOGIN_CHECK, "LOGIN");
                                         }
