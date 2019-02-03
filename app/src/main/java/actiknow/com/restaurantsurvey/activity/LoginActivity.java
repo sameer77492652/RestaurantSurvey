@@ -122,6 +122,7 @@ public class LoginActivity extends AppCompatActivity{
                                         userDetailsPref.putStringPref(LoginActivity.this, UserDetailsPref.USER_RESTAURANT_NAME, jsonObj.getString(AppConfigTags.USER_RESTAURANT_NAME));
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         startActivity(intent);
+                                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                     } else {
                                         Utils.showToast(LoginActivity.this, message, true);
                                         //Utils.showSnackBar(MainActivity.this, clMain, message, Snackbar.LENGTH_LONG, null, null);

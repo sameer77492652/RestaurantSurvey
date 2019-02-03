@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
@@ -92,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         StartSurveyFragment f1 = new StartSurveyFragment();
         fragmentTransaction.add(R.id.fragment_switch, f1, "fragment1");
         fragmentTransaction.commit();
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     private void initListener() {
@@ -144,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                                     if (!error) {
                                         JSONArray jsonArrayQuestion = jsonObj.getJSONArray(AppConfigTags.QUESTIONS);
                                         if(jsonArrayQuestion.length() > 0){
-                                          //  userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LOGIN_CHECK, "LOGIN");
+                                            userDetailsPref.putStringPref(MainActivity.this, UserDetailsPref.LOGIN_CHECK, "LOGIN");
                                         }
                                     } else {
                                         Utils.showSnackBar(MainActivity.this, clMain, message, Snackbar.LENGTH_LONG, null, null);
@@ -218,4 +222,33 @@ public class MainActivity extends AppCompatActivity {
         }
         return response;
     }
+
+    @Override
+    public void onBackPressed () {
+        MaterialDialog dialog = new MaterialDialog.Builder (this)
+                .content (getResources().getText(R.string.dialog_text_quit_application))
+                .positiveColor (getResources ().getColor (R.color.colorAccent))
+                .contentColor (getResources ().getColor (R.color.colorAccent))
+                .negativeColor (getResources ().getColor (R.color.colorAccent))
+                .canceledOnTouchOutside (true)
+                .cancelable (true)
+                .positiveText (R.string.dialog_action_yes)
+                .negativeText (R.string.dialog_action_no)
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                    }
+                })
+                .onPositive (new MaterialDialog.SingleButtonCallback () {
+                    @Override
+                    public void onClick (@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        finish ();
+                        overridePendingTransition (R.anim.slide_in_left, R.anim.slide_out_right);
+                    }
+                }).build ();
+
+        dialog.show ();
+    }
+
 }

@@ -119,6 +119,7 @@ public class RatingFragment extends Fragment {
                                         Utils.showToast(getActivity(), message, true);
                                         Intent intent = new Intent(getActivity(), MainActivity.class);
                                         startActivity(intent);
+                                        getActivity().overridePendingTransition (R.anim.slide_in_left, R.anim.slide_out_right);
                                     } else {
                                         Utils.showToast(getActivity(), message, true);
                                     }
@@ -153,6 +154,8 @@ public class RatingFragment extends Fragment {
                 @Override
                 protected Map<String, String> getParams () throws AuthFailureError {
                     Map<String, String> params = new Hashtable<String, String>();
+                    Utils.showLog(Log.ERROR, "ANSWER_ID", answer_ids, true);
+                    Utils.showLog(Log.ERROR, "ANSWER_RATING", answer, true);
                     params.put(AppConfigTags.NAME, userDetailsPref.getStringPref(getActivity(), UserDetailsPref.CUSTOMER_NAME));
                     params.put(AppConfigTags.MOBILE, userDetailsPref.getStringPref(getActivity(), UserDetailsPref.CUSTOMER_MOBILE));
                     params.put(AppConfigTags.ANSWER_IDS, answer_ids);

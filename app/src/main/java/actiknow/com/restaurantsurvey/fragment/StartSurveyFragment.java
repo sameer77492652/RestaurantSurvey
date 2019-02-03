@@ -50,6 +50,7 @@ public class StartSurveyFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_switch, myfragment);
                 fragmentTransaction.commit();
+                getActivity().overridePendingTransition (R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
 

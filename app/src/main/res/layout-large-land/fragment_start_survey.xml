@@ -30,6 +30,7 @@
         android:layout_marginLeft="150dp"
         android:layout_marginRight="150dp"
         android:hint="Mobile Number (Optional)"
+        android:inputType="number"
         android:imeOptions="actionDone"
         android:background="@drawable/layout_edittext"
         android:layout_below="@id/etName"

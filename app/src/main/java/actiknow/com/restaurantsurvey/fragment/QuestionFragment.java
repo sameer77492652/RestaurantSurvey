@@ -89,6 +89,7 @@ public class QuestionFragment extends Fragment {
                     question.setQues_id(jsonObjQuestion.getInt(AppConfigTags.QUESTION_ID));
                     question.setQues_english(jsonObjQuestion.getString(AppConfigTags.QUESTION_ENGLISH));
                     question.setQues_hindi(jsonObjQuestion.getString(AppConfigTags.QUESTION_HINDI));
+                    //question.setQues_hindi(new String(jsonObjQuestion.getString(AppConfigTags.QUESTION_HINDI).getBytes("ISO-8859-1"), "UTF-8"));
                     optionList.clear();
                     JSONArray jsonArrayOption = jsonObjQuestion.getJSONArray(AppConfigTags.OPTIONS);
                     for(int j=0; j < jsonArrayOption.length(); j++){
@@ -131,9 +132,11 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
+                        responseList.add(new Response(index, 5, questionList.get(index).getQuestionOptionList().get(0).getOpt_id()));
                         sendToRatingActivity(5);
                     } else {
                         index = index + 1;
+                        responseList.add(new Response(index, 5, questionList.get(index - 1).getQuestionOptionList().get(0).getOpt_id()));
                         questionChange(5);
                     }
                 }
@@ -146,9 +149,11 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
+                        responseList.add(new Response(index, 4, questionList.get(index).getQuestionOptionList().get(1).getOpt_id()));
                         sendToRatingActivity(4);
                     } else {
                         index = index + 1;
+                        responseList.add(new Response(index, 4, questionList.get(index - 1).getQuestionOptionList().get(1).getOpt_id()));
                         questionChange(4);
                     }
                 }
@@ -161,9 +166,11 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
+                        responseList.add(new Response(index, 3, questionList.get(index).getQuestionOptionList().get(2).getOpt_id()));
                         sendToRatingActivity(3);
                     } else {
                         index = index + 1;
+                        responseList.add(new Response(index, 3, questionList.get(index - 1).getQuestionOptionList().get(2).getOpt_id()));
                         questionChange(3);
                     }
                 }
@@ -176,9 +183,11 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
+                        responseList.add(new Response(index, 2, questionList.get(index).getQuestionOptionList().get(3).getOpt_id()));
                         sendToRatingActivity(2);
                     } else {
                         index = index + 1;
+                        responseList.add(new Response(index, 2, questionList.get(index - 1).getQuestionOptionList().get(3).getOpt_id()));
                         questionChange(2);
                     }
                 }
@@ -191,9 +200,11 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
+                        responseList.add(new Response(index, 1, questionList.get(index).getQuestionOptionList().get(4).getOpt_id()));
                         sendToRatingActivity(5);
                     } else {
                         index = index + 1;
+                        responseList.add(new Response(index, 1, questionList.get(index - 1).getQuestionOptionList().get(4).getOpt_id()));
                         questionChange(5);
                     }
                 }
@@ -206,9 +217,11 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
+                        responseList.add(new Response(index, 5, questionList.get(index).getQuestionOptionList().get(0).getOpt_id()));
                         sendToRatingActivity(5);
                     } else {
                         index = index + 1;
+                        responseList.add(new Response(index, 5, questionList.get(index - 1).getQuestionOptionList().get(0).getOpt_id()));
                         questionChange(5);
                     }
                 }
@@ -221,12 +234,15 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
+                        responseList.add(new Response(index, 3, questionList.get(index).getQuestionOptionList().get(1).getOpt_id()));
                         sendToRatingActivity(3);
                     } else {
                         index = index + 1;
-                        questionChange(5);
+                        responseList.add(new Response(index, 3, questionList.get(index - 1).getQuestionOptionList().get(1).getOpt_id()));
+                        questionChange(3);
                     }
                 }
+
             }
         });
 
@@ -236,10 +252,12 @@ public class QuestionFragment extends Fragment {
                 if(!clicked) {
                     clicked = true;
                     if (questionList.size() == index + 1) {
+                        responseList.add(new Response(index, 1, questionList.get(index).getQuestionOptionList().get(2).getOpt_id()));
                         sendToRatingActivity(1);
                     } else {
                         index = index + 1;
-                        questionChange(5);
+                        responseList.add(new Response(index, 1, questionList.get(index - 1).getQuestionOptionList().get(2).getOpt_id()));
+                        questionChange(1);
                     }
                 }
             }
@@ -248,7 +266,6 @@ public class QuestionFragment extends Fragment {
     }
 
     private void sendToRatingActivity(int selected_response) {
-        responseList.add(new Response(index + 1, selected_response, questionList.get(index).getQuestionOptionList().get(selected_response - 1).getOpt_id()));
         answer = answer + "," + String.valueOf(selected_response);
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("response_list", responseList);
@@ -259,19 +276,17 @@ public class QuestionFragment extends Fragment {
         ratingFragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.fragment_switch, ratingFragment);
         fragmentTransaction.commit();
+        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void questionChange(int selected_response){
-        if(index != 0) {
-            responseList.add(new Response(index+1, selected_response, questionList.get(index).getQuestionOptionList().get(selected_response - 1).getOpt_id()));
-        }
+        Utils.showLog(Log.ERROR, "Index",""+ index, true);
         if(index == 1){
             answer = String.valueOf(selected_response);
         }else{
-            answer = answer + "," + String.valueOf(selected_response);;
+            answer = answer + "," + String.valueOf(selected_response);
         }
         clicked = false;
-        Utils.showLog(Log.ERROR, "language2", userDetailsPref.getStringPref(getActivity(), UserDetailsPref.LANGUAGE_TYPE), true);
         Utils.showLog(Log.ERROR, "selected_response", ""+questionList.get(selected_response).getOptionList().size(), true);
         switch (questionList.get(index).getOptionList().size()){
             case 3 :
