@@ -12,11 +12,9 @@
     <string name="dialog_action_ignore">इग्नोर करें</string>
     <string name="dialog_action_update">अपडेट करें</string>
     <string name="dialog_action_close">क्लोज करें</string>
-
     <string name="dialog_action_save">SAVE</string>
     <string name="dialog_action_resend_otp">RESEND OTP</string>
     <string name="dialog_action_show_all">SHOW ALL</string>
-
     <string name="activity_sign_up_hint_full_name">Full Name</string>
     <string name="activity_sign_up_email">Email Address</string>
     <string name="activity_sign_up_mobile">Mobile Number</string>
@@ -73,10 +71,7 @@
     <string name="otp_didnt_match">OTP didn\'t match</string>
     <string name="activity_login_text_i_agree">You agree to our Term and Condition and Privacy Policy</string>
 
-
     <string name="dialog_text_auto_fill">Do you want to auto fill the details?</string>
-
-
     <string name="progress_dialog_text_loading">Loading&#8230;</string>
     <string name="progress_dialog_text_generating_survey">Generating Survey&#8230;</string>
     <string name="progress_dialog_text_logging_out">Logging Out&#8230;</string>
@@ -84,14 +79,12 @@
     <string name="progress_dialog_text_sending_request">Sending Request&#8230;</string>
     <string name="progress_dialog_text_submitting_responses">Submitting Responses&#8230;</string>
     <string name="progress_dialog_text_initializing">Initializing Application&#8230;</string>
-
     <string name="activity_do_you_know">क्या आप जानते है?</string>
     <string name="activity_point_score">इस सवाल के लिए अंक</string>
     <string name="activity_skip">स्किप और अगला</string>
     <string name="activity_correct_answer">सही उत्तर अंकों की कमाई -  </string>
     <string name="activity_incorrect_answer">गलत जवाब। सही उत्तर है-</string>
     <string name="activity_home">क्या आप होम पेज पर जाना चाहते हैं-</string>
-    <string name="activity_earned_points">कुल अर्जित अंक</string>
-    <string name="activity_start_survey"></string>
+    <string name="activity_start_survey">Start Survey</string>
 
 </resources>

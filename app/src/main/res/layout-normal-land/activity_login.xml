@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/leaves_horizontal"
+    android:background="@color/lightblue"
     tools:context=".activity.MainActivity"
     tools:ignore="MissingDefaultResource">
 
@@ -38,7 +38,7 @@
             android:layout_marginLeft="150dp"
             android:layout_marginRight="150dp"
             android:background="@drawable/edittext_border"
-            android:hint="Name (optional)"
+            android:hint="Username"
             android:layout_below="@+id/tvLogin"
 
             />
